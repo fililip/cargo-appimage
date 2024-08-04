@@ -274,6 +274,8 @@ fn main() -> Result<()> {
             .context("Unable to create output dir")?;
         Command::new("appimagetool")
             .args(bin_args)
+            .arg("--runtime-file")
+            .arg("./runtime-fuse3-x86_64")
             .arg(&format!("{}/appimage/{}.AppImage", &target_prefix, &name))
             .env("ARCH", platforms::target::TARGET_ARCH.as_str())
             .env("VERSION", pkg.version())
